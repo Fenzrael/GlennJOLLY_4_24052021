@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <!--Head Page-->
   <head>
+    <!--Metadata for robot-->
     <meta charset="utf-8" />
-    <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+
+    <!--Link Page-->
+    <link rel="stylesheet" href="./modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
+
+    <!--Title Page-->
+    <title>Reservation</title>
   </head>
+
+  <!--Body Page-->
   <body>
-    <div class="topnav" id="myTopnav">
+    <!--Header Page-->
+    <header class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
-    <div class="main-navbar">
+        <img alt="logo" src="./img/Logo.png" width="auto" height="auto" />
+      </div>
+
+      <div class="main-navbar">
       
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </header>
+
+    <!--Main Page-->
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -40,13 +49,15 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
+          <!--Sign-up Button / Open modal (button responsive max-width: 1300px)-->
           <button class="btn-signup modal-btn">
             je m'inscris
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./img/bg_img.jpg" alt="img" />
         </div>
+        <!--Sign-up Button / Open modal (button responsive max-width: 540px)-->
         <button class="btn-signup modal-btn">
           je m'inscris
         </button>
@@ -215,6 +226,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="./modal.js"></script>
   </body>
 </html>
