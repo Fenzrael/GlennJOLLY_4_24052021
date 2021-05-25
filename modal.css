@@ -509,13 +509,37 @@ footer {
 }
 
 @media screen and (max-width: 540px) {
+  main {
+    margin: 0 11px;
+    padding: 0;
+  }
   .topnav a {
     display: none;
   }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    font-size: 1.8rem;
+    margin-top: -5px;
+  }
+  .header-logo {
+    width: auto;
+  }
+  .header-logo img {
+    max-width: 100%;
+    max-height: auto;
+  }
+  .hero-content {
+    padding: 0;
+    min-width: inherit;
+  }
+  .hero-headline {
+    font-size: 15vw;
+    word-wrap: break-word;
+  }
+  .hero-text {
+    font-size: 7vw;
+    height: auto;
   }
 } 
 

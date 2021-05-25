@@ -1,3 +1,4 @@
+// Function button navigation (screen max-width:768px)
 function editNav() {
   let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -12,6 +13,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+const closeIcon = document.getElementsByClassName("close");
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -20,4 +24,8 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+closeIcon.addEventListener("click", closeModal);
 
+function closeModal() {
+  modalbg.style.display = "none";
+}
