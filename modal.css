@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -78,8 +78,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 /* Modal form */
@@ -492,6 +490,7 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
   }
   .topnav.responsive {
     position: relative;
@@ -534,13 +533,12 @@ footer {
     min-width: inherit;
   }
   .hero-headline {
-    font-size: 15vw;
+    font-size: 11vw;
     word-wrap: break-word;
   }
   .hero-text {
-    font-size: 7vw;
+    font-size: 4vw;
     height: auto;
+    margin-top: 1rem;
   }
-} 
-
-
+}
