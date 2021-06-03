@@ -170,7 +170,7 @@ input {
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  height: 50px;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -519,14 +519,13 @@ footer {
     float: right;
     display: block;
     font-size: 1.8rem;
-    margin-top: -5px;
+    margin-top: -4px;
   }
   .header-logo {
     width: auto;
   }
   .header-logo img {
     max-width: 100%;
-    max-height: auto;
   }
   .hero-content {
     padding: 0;
@@ -540,5 +539,11 @@ footer {
     font-size: 4vw;
     height: auto;
     margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header-logo {
+    max-width: 80%;
   }
 }

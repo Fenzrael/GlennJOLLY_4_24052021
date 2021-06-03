@@ -1,4 +1,20 @@
+//**********************************************************************************************************
+// DOM Elements
+//**********************************************************************************************************
+
+const modalBg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const formData = document.querySelectorAll(".formData");
+const closeIcon = document.querySelector(".close");
+
+const inputs = document.querySelectorAll(
+  'input[type="text"], input[type="email"], input[type="date"], input[type="number"]'
+);
+
+// ********************************************************************************************************
 // Function button navigation (screen max-width:768px)
+//*********************************************************************************************************
+
 function editNav() {
   let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -8,11 +24,9 @@ function editNav() {
   }
 }
 
-// DOM Elements
-const modalBg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeIcon = document.querySelectorAll(".close");
+// ********************************************************************************************************
+// Open Close form
+//*********************************************************************************************************
 
 // launch modal form
 function launchModal() {
@@ -28,7 +42,39 @@ function closeModal() {
 }
 
 // Close modal event
-closeIcon.forEach((close) => close.addEventListener("click", closeModal));
+closeIcon.addEventListener("click", closeModal);
 
+//*********************************************************************************************************
+// Search Value enter by User
+inputs.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    switch (e.target.id) {
+      case "firstName":
+        firstName(e.target.value);
+        break;
+      case "secondName":
+        secondName(e.target.value);
+        break;
+      case "email":
+        email(e.target.value);
+        break;
+      case "birthdate":
+        birthday(e.target.value);
+        break;
+      case "quantity":
+        quantity(e.target.value);
+        break;
+      default:
+        null;
+    }
+  });
+});
 
-
+const firstName = (value) => {
+  if (value.length < 2) {
+  }
+};
+const secondName = (value) => {};
+const email = (value) => {};
+const birthdate = (value) => {};
+const quantity = (value) => {};
