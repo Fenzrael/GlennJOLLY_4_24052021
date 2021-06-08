@@ -11,7 +11,7 @@ const inputs = document.querySelectorAll(
   'input[type="text"], input[type="email"], input[type="date"], input[type="number"]'
 );
 
-// ********************************************************************************************************
+//*********************************************************************************************************
 // Function button navigation (screen max-width:768px)
 //*********************************************************************************************************
 
@@ -50,31 +50,68 @@ inputs.forEach((input) => {
   input.addEventListener("input", (e) => {
     switch (e.target.id) {
       case "firstName":
-        firstName(e.target.value);
+        firstNameChecker(e.target.value);
         break;
       case "secondName":
-        secondName(e.target.value);
+        secondNameChecker(e.target.value);
         break;
       case "email":
-        email(e.target.value);
+        emailChecker(e.target.value);
         break;
       case "birthdate":
-        birthday(e.target.value);
+        birthdateChecker(e.target.value);
         break;
       case "quantity":
-        quantity(e.target.value);
+        quantityChecker(e.target.value);
         break;
       default:
-        null;
+        nul;
     }
   });
 });
 
-const firstName = (value) => {
-  if (value.length < 2) {
+const firstNameChecker = (value) => {
+  const firstName = document.getElementById("firstName");
+  const formulaire = document.getElementById("form1");
+  if (value.length < 2 || value.length === 0) {
+    firstName.setAttribute("minlength", 2);
+    firstName.setAttribute("required", "");
+    formulaire.setAttribute("data-error-visible", "true");
+    formulaire.setAttribute(
+      "data-error",
+      "veuillez tapez plus que 2 caractères!"
+    );
+  } else {
+    formulaire.setAttribute("data-error-visible", "false");
   }
 };
-const secondName = (value) => {};
-const email = (value) => {};
-const birthdate = (value) => {};
-const quantity = (value) => {};
+
+const secondNameChecker = (value) => {
+  const secondName = document.getElementById("secondName");
+  const formulaire = document.getElementById("form2");
+  if (value.length < 2 || value.length === 0) {
+    secondName.setAttribute("minlength", 2);
+    secondName.setAttribute("required", "");
+    formulaire.setAttribute("data-error-visible", "true");
+    formulaire.setAttribute(
+      "data-error",
+      "veuillez tapez plus que 2 caractères!"
+    );
+  } else {
+    formulaire.setAttribute("data-error-visible", "false");
+  }
+};
+
+const emailChecker = (value) => {
+  const email = document.getElementById("email");
+  const formulaire = document.getElementById("form3");
+
+  if (value.length < 1 || !value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+    email.setAttribute("minlength", 1);
+    email.setAttribute("required", "");
+    formulaire.setAttribute("data-error-visible", "true");
+    formulaire.setAttribute("data-error", "Entrez une adresse Mail Valide!");
+  } else {
+    formulaire.setAttribute("data-error-visible", "false");
+  }
+};
