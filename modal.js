@@ -2,16 +2,24 @@
 // DOM Elements
 //**********************************************************************************************************
 
+// Variable modal
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const closeIcon = document.querySelector(".close");
-const checkboxInputList = document.querySelectorAll(".checkbox-input");
+
+// Variable Form
+const formData = document.querySelectorAll(".formData");
+const checkboxInputList = document.getElementsByName("location");
 
 const inputs = document.querySelectorAll(
-  'input[type="text"], input[type="email"], input[type="date"], input[type="number"]'
+  'input[type="text"], input[type="email"], input[type="number"]'
 );
 
+// Storage Variable
+let firstName, secondName, email, birthdate, quantity;
+
+const submitModal = document.querySelector(".btn-submit");
+const form = document.querySelector("form");
 //*********************************************************************************************************
 // Function button navigation (screen max-width:768px)
 //*********************************************************************************************************
@@ -74,11 +82,9 @@ inputs.forEach((input) => {
 // Function Arrow Checker (Verification of Validate Data)
 //*********************************************************************************************************
 
-let firstName, secondName, email, birthdate, quantity;
-
 // First Name Section
 const firstNameChecker = (value) => {
-  const firstName = document.getElementById("firstName");
+  const firstNameInput = document.getElementById("firstName");
   const form = document.getElementById("form1");
   if (value.length < 2 || value.length === 0) {
     form.setAttribute("data-error-visible", "true");
@@ -92,7 +98,7 @@ const firstNameChecker = (value) => {
 
 // Second Name Section
 const secondNameChecker = (value) => {
-  const secondName = document.getElementById("secondName");
+  const secondNameInput = document.getElementById("secondName");
   const form = document.getElementById("form2");
   if (value.length < 2 || value.length === 0) {
     form.setAttribute("data-error-visible", "true");
@@ -106,10 +112,10 @@ const secondNameChecker = (value) => {
 
 // Email Section
 const emailChecker = (value) => {
-  const email = document.getElementById("email");
+  const emailInput = document.getElementById("email");
   const form = document.getElementById("form3");
 
-  if (value.length < 1 || !value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+  if (value.length <= 0 || !value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
     form.setAttribute("data-error-visible", "true");
     form.setAttribute("data-error", "Entrez une adresse Mail Valide!");
     email = null;
@@ -119,9 +125,9 @@ const emailChecker = (value) => {
   }
 };
 
-//Quantity Section
+// Quantity Section
 const quantityChecker = (value) => {
-  const quantity = document.getElementById("quantity");
+  const quantityInput = document.getElementById("quantity");
   const form = document.getElementById("form4");
 
   if (value <= 0 || value === null || value === undefined) {
@@ -135,10 +141,33 @@ const quantityChecker = (value) => {
 };
 
 //Location Section
-checkboxInputList.forEach((checkbox) => {
-  if (checkbox.checked === true) {
+const radioLocation = document.getElementById("radioLocation");
+//Function Verification Button Radio Checked
+checkboxInputList.forEach((location) => {
+  if (location.checked === true) {
     return true;
   } else {
     return false;
   }
 });
+
+/*// Submit Section
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (firstName && secondName && email && quantity) {
+    const data = {
+      firstName,
+      secondName,
+      email,
+      quantity,
+    };
+
+    firstName = null;
+    secondName = null;
+    email = null;
+    quantity = null;
+  } else {
+    alert("veuillez remplir tout les champs!");
+  }
+});*/

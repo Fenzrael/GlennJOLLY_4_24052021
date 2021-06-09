@@ -67,12 +67,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
+            <form name="reserve" action="index.html" method="get">
               <div class="formData" id="form1">
                 <label for="firstName">Prénom</label><br />
                 <input
@@ -123,7 +118,7 @@
                 />
               </div>
               <p class="text-label">Quelles villes ?</p>
-              <div class="formData">
+              <div class="formData" id="radioLocation">
                 <input
                   class="checkbox-input"
                   type="radio"
