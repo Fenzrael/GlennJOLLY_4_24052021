@@ -69,6 +69,9 @@ inputs.forEach((input) => {
       case "email":
         emailChecker(e.target.value);
         break;
+      case "birthdate":
+        birthdateChecker(e.target.value);
+        break;
       case "quantity":
         quantityChecker(e.target.value);
         break;
@@ -84,8 +87,8 @@ inputs.forEach((input) => {
 
 // First Name Section
 const firstNameChecker = (value) => {
-  const firstNameInput = document.getElementById("firstName");
   const form = document.getElementById("form1");
+
   if (value.length < 2 || value.length === 0) {
     form.setAttribute("data-error-visible", "true");
     form.setAttribute("data-error", "veuillez tapez plus que 2 caractères!");
@@ -98,8 +101,8 @@ const firstNameChecker = (value) => {
 
 // Second Name Section
 const secondNameChecker = (value) => {
-  const secondNameInput = document.getElementById("secondName");
   const form = document.getElementById("form2");
+
   if (value.length < 2 || value.length === 0) {
     form.setAttribute("data-error-visible", "true");
     form.setAttribute("data-error", "veuillez tapez plus que 2 caractères!");
@@ -112,7 +115,6 @@ const secondNameChecker = (value) => {
 
 // Email Section
 const emailChecker = (value) => {
-  const emailInput = document.getElementById("email");
   const form = document.getElementById("form3");
 
   if (value.length <= 0 || !value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
@@ -125,10 +127,23 @@ const emailChecker = (value) => {
   }
 };
 
+// Birthdate Section
+const birthdateChecker = (value) => {
+  const form = document.getElementById("form4");
+
+  if (value <= 0 || value === null || value === undefined) {
+    form.setAttribute("data-error-visible", "true");
+    form.setAttribute("data-error", "veuillez saisir une date!");
+    birthdate = null;
+  } else {
+    form.setAttribute("data-error-visible", "false");
+    birthdate = value;
+  }
+};
+
 // Quantity Section
 const quantityChecker = (value) => {
-  const quantityInput = document.getElementById("quantity");
-  const form = document.getElementById("form4");
+  const form = document.getElementById("form5");
 
   if (value <= 0 || value === null || value === undefined) {
     form.setAttribute("data-error-visible", "true");
@@ -141,33 +156,45 @@ const quantityChecker = (value) => {
 };
 
 //Location Section
-const radioLocation = document.getElementById("radioLocation");
-//Function Verification Button Radio Checked
-checkboxInputList.forEach((location) => {
-  if (location.checked === true) {
-    return true;
-  } else {
-    return false;
-  }
-});
+const locationChecker = () => {
+  const radios = document.getElementsByName("location");
+  const location = document.getElementById("radioLocation");
+  let locationValid = false;
 
-/*// Submit Section
+  let i = 0;
+  while (!locationValid && i < radios.length) {
+    if (radios[i].checked) locationValid = true;
+    i++;
+  }
+
+  if (!locationValid) {
+    location.setAttribute("data-error-visible", "true");
+    location.setAttribute("data-error", "veuillez choisir une ville!");
+  } else {
+    location.setAttribute("data-error-visible", "false");
+    return locationValid;
+  }
+};
+
+// Terms of Use Section
+
+//*********************************************************************************************************
+// Submit Section
+//*********************************************************************************************************
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (firstName && secondName && email && quantity) {
-    const data = {
-      firstName,
-      secondName,
-      email,
-      quantity,
-    };
-
-    firstName = null;
-    secondName = null;
-    email = null;
-    quantity = null;
-  } else {
-    alert("veuillez remplir tout les champs!");
-  }
-});*/
+  const firstNameInput = document.getElementById("firstName");
+  firstNameChecker(firstNameInput.value);
+  const secondNameInput = document.getElementById("secondName");
+  secondNameChecker(secondNameInput.value);
+  const emailInput = document.getElementById("email");
+  emailChecker(emailInput.value);
+  const birthdateInput = document.getElementById("birthdate");
+  birthdateChecker(birthdateInput.value);
+  const quantityInput = document.getElementById("quantity");
+  quantityChecker(quantityInput.value);
+  const locationInput = document.getElementsByName("location");
+  locationChecker(locationInput.value);
+});
