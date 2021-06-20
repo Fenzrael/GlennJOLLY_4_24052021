@@ -10,14 +10,9 @@ const closeIcon = document.querySelector(".close");
 // Variable Form
 const formData = document.querySelectorAll(".formData");
 const checkboxInputList = document.getElementsByName("location");
-
 const inputs = document.querySelectorAll(
   'input[type="text"], input[type="email"], input[type="number"]'
 );
-
-// Storage Variable
-let firstName, secondName, email, birthdate, quantity;
-
 const submitModal = document.querySelector(".btn-submit");
 const form = document.querySelector("form");
 //*********************************************************************************************************
@@ -195,20 +190,33 @@ const termChecker = () => {
 //*********************************************************************************************************
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
   const firstNameInput = document.getElementById("firstName");
-  firstNameChecker(firstNameInput.value);
   const secondNameInput = document.getElementById("secondName");
-  secondNameChecker(secondNameInput.value);
   const emailInput = document.getElementById("email");
-  emailChecker(emailInput.value);
   const birthdateInput = document.getElementById("birthdate");
-  birthdateChecker(birthdateInput.value);
   const quantityInput = document.getElementById("quantity");
-  quantityChecker(quantityInput.value);
   const locationInput = document.getElementsByName("location");
-  locationChecker(locationInput.value);
   const termInput = document.getElementById("checkbox1");
-  termChecker(termInput.value);
+
+  if (
+    firstNameInput.value == "" ||
+    secondNameInput.value == "" ||
+    emailInput.value == "" ||
+    quantityInput.value == "" ||
+    locationInput.value == "" ||
+    termInput.value == ""
+  ) {
+    firstNameChecker(firstNameInput.value);
+    secondNameChecker(secondNameInput.value);
+    emailChecker(emailInput.value);
+    birthdateChecker(birthdateInput.value);
+    quantityChecker(quantityInput.value);
+    locationChecker(locationInput.value);
+    termChecker(termInput.value);
+    e.preventDefault();
+  } else {
+    formData.style.display = "none";
+    document.querySelector(".content").textContent = "test";
+    return true;
+  }
 });
