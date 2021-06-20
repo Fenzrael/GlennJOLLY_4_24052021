@@ -75,6 +75,8 @@ inputs.forEach((input) => {
       case "quantity":
         quantityChecker(e.target.value);
         break;
+      case "checkbox1":
+        termChecker(e.target.value);
       default:
         null;
     }
@@ -177,6 +179,16 @@ const locationChecker = () => {
 };
 
 // Terms of Use Section
+const termChecker = () => {
+  const term = document.getElementById("checkbox1");
+  const use = document.getElementById("useValidate");
+  if (term.checked === false) {
+    use.setAttribute("data-error-visible", "true");
+    use.setAttribute("data-error", "veuillez remplir les termes!");
+  } else {
+    use.setAttribute("data-error-visible", "false");
+  }
+};
 
 //*********************************************************************************************************
 // Submit Section
@@ -197,4 +209,6 @@ form.addEventListener("submit", (e) => {
   quantityChecker(quantityInput.value);
   const locationInput = document.getElementsByName("location");
   locationChecker(locationInput.value);
+  const termInput = document.getElementById("checkbox1");
+  termChecker(termInput.value);
 });
