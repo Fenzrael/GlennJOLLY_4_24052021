@@ -6,15 +6,21 @@
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeIcon = document.querySelector(".close");
+const content = document.querySelector(".content");
 
 // Variable Form
-const formData = document.querySelectorAll(".formData");
+const formData = document.getElementById("formData");
+console.log(formData);
 const checkboxInputList = document.getElementsByName("location");
 const inputs = document.querySelectorAll(
   'input[type="text"], input[type="email"], input[type="number"]'
 );
 const submitModal = document.querySelector(".btn-submit");
 const form = document.querySelector("form");
+const modalBody = document.querySelector(".modal-body");
+
+const confirmForm = document.getElementById("confirmForm");
+const closeValidForm = document.getElementById("closeValidForm");
 //*********************************************************************************************************
 // Function button navigation (screen max-width:768px)
 //*********************************************************************************************************
@@ -53,7 +59,7 @@ closeIcon.addEventListener("click", closeModal);
 //*********************************************************************************************************
 
 inputs.forEach((input) => {
-  input.addEventListener("input", (e) => {
+  input.addEventListener("change", (e) => {
     switch (e.target.id) {
       case "firstName":
         firstNameChecker(e.target.value);
@@ -81,7 +87,6 @@ inputs.forEach((input) => {
 //*********************************************************************************************************
 // Function Arrow Checker (Verification of Validate Data)
 //*********************************************************************************************************
-
 // First Name Section
 const firstNameChecker = (value) => {
   const form = document.getElementById("form1");
@@ -189,7 +194,9 @@ const termChecker = () => {
 // Submit Section
 //*********************************************************************************************************
 
+// Form Validation
 form.addEventListener("submit", (e) => {
+  e.preventDefault();
   const firstNameInput = document.getElementById("firstName");
   const secondNameInput = document.getElementById("secondName");
   const emailInput = document.getElementById("email");
@@ -202,6 +209,7 @@ form.addEventListener("submit", (e) => {
     firstNameInput.value == "" ||
     secondNameInput.value == "" ||
     emailInput.value == "" ||
+    birthdateInput.value == "" ||
     quantityInput.value == "" ||
     locationInput.value == "" ||
     termInput.value == ""
@@ -214,9 +222,12 @@ form.addEventListener("submit", (e) => {
     locationChecker(locationInput.value);
     termChecker(termInput.value);
     e.preventDefault();
+    return false;
   } else {
     formData.style.display = "none";
-    document.querySelector(".content").textContent = "test";
+    confirmForm.style.display = "flex";
+    closeValidForm.style.display = "block";
+    closeValidForm.addEventListener("click", closeModal);
     return true;
   }
 });

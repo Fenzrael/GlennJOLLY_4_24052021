@@ -463,6 +463,16 @@ footer {
   margin: 0 20px;
 }
 
+#confirmForm {
+  display: none;
+  align-items: center;
+  height: 100vh;
+}
+
+#closeValidForm {
+  display: none;
+}
+
 /****************/
 /* Media query */
 /**************/
